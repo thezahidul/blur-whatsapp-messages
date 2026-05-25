@@ -1,12 +1,17 @@
 {
   "manifest_version": 3,
-  "name": "WhatsApp Privacy Blur",
+  "name": "HideChat - WhatsApp Privacy",
   "version": "1.0",
-  "description": "Blurs chat names and messages on WhatsApp Web with hover-to-reveal.",
+  "description": "Hide your sensitive WhatsApp Web chats, names, and messages with blur privacy filters.",
+  "permissions": ["storage"],
+  "action": {
+    "default_popup": "src/popup.html"
+  },
   "content_scripts": [
     {
       "matches": ["https://web.whatsapp.com/*"],
-      "css": ["content.css"]
+      "js": ["src/content.js"],
+      "css": ["src/styles.css"]
     }
   ]
 }
