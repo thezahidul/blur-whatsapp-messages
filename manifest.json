@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "WhatsApp Privacy Blur",
+  "version": "1.0",
+  "description": "Blurs chat names and messages on WhatsApp Web with hover-to-reveal.",
+  "content_scripts": [
+    {
+      "matches": ["https://web.whatsapp.com/*"],
+      "css": ["content.css"]
+    }
+  ]
+}
