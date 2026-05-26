@@ -1,16 +1,21 @@
-function setupToggle(buttonId, storageKey) {
+function setupToggle(buttonId, storageKey, label) {
   const btn = document.getElementById(buttonId);
+
+  // স্টেট রিড করা
   chrome.storage.sync.get([storageKey], (res) => {
-    btn.innerText = res[storageKey] ? "Disable Blur" : "Enable Blur";
+    btn.textContent = res[storageKey] ? `Show ${label}` : `Hide ${label}`;
   });
+
   btn.addEventListener('click', () => {
     chrome.storage.sync.get([storageKey], (res) => {
       const newState = !res[storageKey];
       chrome.storage.sync.set({ [storageKey]: newState }, () => {
-        btn.innerText = newState ? "Disable Blur" : "Enable Blur";
+        btn.textContent = newState ? `Show ${label}` : `Hide ${label}`;
       });
     });
   });
 }
-setupToggle('toggleSidebar', 'blurSidebar');
-setupToggle('toggleMessages', 'blurMessages');
+
+setupToggle('toggleTitles', 'blurTitles', 'Titles');
+setupToggle('togglePictures', 'blurPictures', 'Pictures');
+setupToggle('toggleMessages', 'blurMessages', 'Messages');

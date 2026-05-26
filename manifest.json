@@ -3,15 +3,30 @@
   "name": "HideChat - WhatsApp Privacy",
   "version": "1.0",
   "description": "Hide your sensitive WhatsApp Web chats, names, and messages with blur privacy filters.",
-  "permissions": ["storage"],
+  "permissions": [
+    "storage"
+  ],
   "action": {
-    "default_popup": "src/popup.html"
+    "default_popup": "src/popup.html",
+    "default_icon": {
+      "16": "assets/icon-16.png",
+      "24": "assets/icon-24.png",
+      "48": "assets/icon-48.png",
+      "128": "assets/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "assets/icon-16.png",
+    "24": "assets/icon-24.png",
+    "48": "assets/icon-48.png",
+    "128": "assets/icon-128.png"
   },
   "content_scripts": [
     {
       "matches": ["https://web.whatsapp.com/*"],
       "js": ["src/content.js"],
-      "css": ["src/styles.css"]
+      "css": ["src/styles.css"],
+      "run_at": "document_end"
     }
   ]
 }
