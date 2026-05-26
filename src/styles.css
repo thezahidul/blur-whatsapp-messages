@@ -1,32 +1,35 @@
-/* --- Titles Blur (Names) --- */
-/* সাইডবারের চ্যাট নাম (data-testid ব্যবহার করে) */
+/* --- Titles Blur --- */
+/* সাইডবারের নাম এবং চ্যাট হেডার টাইটেল */
 body.blur-titles [data-testid="cell-frame-title"] span[dir="auto"],
-/* চ্যাট হেডার টাইটেল (আপনার দেওয়া নতুন ডাটা) */
 body.blur-titles [data-testid="conversation-info-header-chat-title"] {
     filter: blur(8px) !important;
 }
 
 /* --- Pictures Blur --- */
-/* সাইডবার এবং মেইন চ্যাট প্রোফাইল পিকচার */
+/* সাইডবারের অ্যাভাটার এবং চ্যাটের ভেতরে ইমেজ বা ভিডিও থাম্বনেইল */
 body.blur-pictures [data-testid^="list-item"] img,
-body.blur-pictures [data-testid="conversation-header"] img {
+body.blur-pictures img[src^="blob:"],
+body.blur-pictures [data-testid="media-column"] {
     filter: blur(8px) !important;
 }
 
 /* --- Messages Blur --- */
-/* সাইডবার প্রিভিউ এবং মেইন চ্যাট এরিয়া মেসেজ */
+/* মেসেজ টেক্সট, সাইডবার প্রিভিউ এবং সব ধরনের মিডিয়া মেসেজ */
 body.blur-messages [data-testid="cell-frame-secondary"] span[dir="ltr"],
-body.blur-messages div.copyable-text span {
+body.blur-messages div.copyable-text span,
+body.blur-messages div[data-testid^="msg-"] > div:not([data-testid="conversation-info-header-chat-title"]) {
     filter: blur(8px) !important;
 }
 
-/* Hover-to-Reveal: শুধু মেসেজ বা লিস্ট আইটেমে মাউস নিলে ব্লার সরবে */
+/* Hover-to-Reveal: নির্দিষ্ট এলিমেন্টে মাউস নিলে ব্লার সরবে */
 [data-testid^="list-item"]:hover,
-div[data-testid^="msg-container"]:hover {
+div[data-testid^="msg-container"]:hover,
+img[src^="blob:"]:hover {
     filter: blur(0px) !important;
 }
 
-/* নিশ্চিত করুন নোটিফিকেশন টাইম যেন ব্লার না হয় */
-span[data-testid="cell-frame-primary-detail"] {
+/* যা হাইড করা উচিত নয় */
+span[data-testid="cell-frame-primary-detail"],
+div[data-testid="cell-frame-secondary"] > div > span:not([dir="ltr"]) {
     filter: none !important;
 }
